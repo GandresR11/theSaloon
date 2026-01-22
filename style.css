@@ -84,3 +84,18 @@ body { font-family: 'Montserrat', sans-serif; background: var(--bg-light); color
     .location-grid { grid-template-columns: 1fr 1fr; align-items: center; }
     .price-list li { font-size: 1.1rem; }
 }
+/* Por defecto, todos los paneles están ocultos */
+.tab-pane {
+    display: none;
+}
+
+/* Solo se muestra el que tiene la clase 'active' */
+.tab-pane.active {
+    display: block;
+}
+
+/* Estilo opcional para resaltar el botón activo */
+.tab-btn.active {
+    background-color: #d4af37; /* Ejemplo color dorado */
+    color: white;
+}
