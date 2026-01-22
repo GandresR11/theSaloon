@@ -1,250 +1,86 @@
-/* --- 1. CONFIGURACIÓN GLOBAL --- */
 :root {
-    --primary: #c5a059; /* Dorado Rembrandt */
-    --bg-dark: #0a0a0a;
-    --text-white: #ffffff;
-    --text-gray: #a0a0a0;
+    --primary: #c5a059;
+    --white: #ffffff;
+    --bg-light: #fdfdfd;
+    --text-dark: #1a1a1a;
     --font-serif: 'Cinzel', serif;
-    --font-sans: 'Montserrat', sans-serif;
-    --transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-    background-color: var(--bg-dark);
-    color: var(--text-white);
-    font-family: var(--font-sans);
-    overflow-x: hidden;
-}
+body { font-family: 'Montserrat', sans-serif; background: var(--bg-light); color: var(--text-dark); overflow-x: hidden; }
 
-/* --- 2. HEADER --- */
+/* HEADER MOBILE-FIRST */
 .main-header {
-    position: fixed;
-    top: 0; width: 100%;
-    z-index: 1000;
-    padding: 20px 5%;
-    transition: var(--transition);
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
-}
-
-.main-header.scrolled {
-    background: rgba(10, 10, 10, 0.95);
-    padding: 10px 5%;
-}
-
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo img { height: 60px; filter: brightness(1.2); }
-
-.nav-links { display: flex; gap: 30px; list-style: none; }
-
-.nav-links a {
-    color: var(--text-white);
-    text-decoration: none;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: var(--transition);
-}
-
-.nav-links a:hover { color: var(--primary); }
-
-.nav-cta {
-    border: 1px solid var(--primary);
+    position: fixed; width: 100%; z-index: 1000;
     padding: 10px 20px;
-    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.1);
 }
 
-/* --- 3. HERO VIDEO --- */
-.hero-video {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.logo img { height: 40px; }
+
+/* Menú oculto en móvil por defecto */
+.nav-menu {
+    position: absolute; top: 100%; left: 0; width: 100%;
+    background: white; display: none; padding: 20px;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.1);
 }
+.nav-menu.active { display: block; }
+.nav-links { list-style: none; text-align: center; }
+.nav-links li { margin: 15px 0; }
+.nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; text-transform: uppercase; font-size: 0.9rem; }
 
-.video-bg {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    object-fit: cover;
-    z-index: -1;
+.menu-toggle { background: none; border: none; font-size: 1.5rem; color: var(--primary); cursor: pointer; }
+
+/* HERO */
+.hero-video { height: 80vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+.video-bg { position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+.video-overlay { position: absolute; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.4); z-index: 0; }
+.hero-content { z-index: 1; }
+.glamour-title { font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 10px; }
+
+/* SERVICIOS RESPONSIVOS */
+.services-container { padding: 50px 20px; }
+.tabs-scroll-container { 
+    overflow-x: auto; /* Permite scroll horizontal en botones si hay muchos en móvil */
+    white-space: nowrap;
+    margin-bottom: 30px;
+    -webkit-overflow-scrolling: touch;
 }
+.tabs-menu { display: inline-flex; gap: 10px; padding-bottom: 10px; }
+.tab-btn { padding: 8px 15px; background: white; border: 1px solid #ddd; font-size: 0.8rem; }
+.tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-.video-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 0;
-}
+.price-list li { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.9rem; border-bottom: 1px solid #eee; }
 
-.hero-content { z-index: 1; max-width: 800px; }
-
-.glamour-title {
-    font-family: var(--font-serif);
-    font-size: clamp(3rem, 8vw, 6rem);
-    color: var(--primary);
-    margin-bottom: 20px;
-    text-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-
-.mission-vision {
-    font-style: italic;
-    color: var(--text-white);
-    margin-bottom: 40px;
-}
-
-.mission { font-size: 1.2rem; margin-bottom: 10px; }
-.vision { font-size: 0.9rem; color: var(--text-gray); }
-
-/* --- 4. TABS DE SERVICIOS --- */
-.services-container {
-    padding: 100px 10%;
-    background: #0f0f0f;
-}
-
-.section-title {
-    font-family: var(--font-serif);
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.section-title span { color: var(--primary); }
-
-.tabs-menu {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 50px;
-}
-
-.tab-btn {
-    background: transparent;
-    border: 1px solid #333;
-    color: var(--text-gray);
-    padding: 12px 25px;
-    cursor: pointer;
-    font-family: var(--font-sans);
-    letter-spacing: 1px;
-    transition: var(--transition);
-}
-
-.tab-btn.active {
-    border-color: var(--primary);
-    color: var(--primary);
-}
-
-.tab-btn.highlight {
-    background: var(--primary);
-    color: black;
-    border: none;
-    font-weight: 600;
-}
-
-.tab-pane {
-    display: none;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.tab-pane.active {
-    display: block;
-    animation: fadeIn 0.8s ease forwards;
-}
-
-.price-list { list-style: none; }
-
-.price-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-}
-
-.dots {
-    flex-grow: 1;
-    border-bottom: 1px dotted #444;
-    margin: 0 15px;
-}
-
-.special-bridal {
-    text-align: center;
-    padding: 40px;
-    border: 1px solid var(--primary);
-}
-
-/* --- 5. BOTONES FLOTANTES --- */
+/* BOTONES FLOTANTES MÁS PEQUEÑOS EN MÓVIL */
 .floating-bridal-btn {
-    position: fixed;
-    left: 30px;
-    bottom: 30px;
-    width: 90px;
-    height: 90px;
-    background: white;
-    color: black;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    z-index: 999;
-    transition: var(--transition);
+    position: fixed; left: 15px; bottom: 15px; width: 65px; height: 65px;
+    background: white; border: 1px solid var(--primary); border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 99;
 }
+.floating-bridal-btn span { font-size: 0.5rem; font-weight: bold; color: var(--primary); }
 
-.floating-bridal-btn i { font-size: 1.2rem; margin-bottom: 5px; }
-.floating-bridal-btn span { font-size: 0.6rem; text-transform: uppercase; font-weight: bold; }
-.floating-bridal-btn:hover { transform: scale(1.1); background: var(--primary); color: white; }
+.whatsapp-float { position: fixed; right: 15px; bottom: 15px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 25px; z-index: 99; text-decoration: none; }
 
-.whatsapp-float {
-    position: fixed;
-    right: 30px;
-    bottom: 30px;
-    background: #25d366;
-    width: 60px; height: 60px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: white; font-size: 30px;
-    z-index: 999;
-    text-decoration: none;
-}
+/* UBICACIÓN */
+.location-section { padding: 40px 20px; background: white; }
+.location-grid { display: grid; gap: 30px; }
 
-/* --- 6. MODAL Y OTROS (MANTENIDO/AJUSTADO) --- */
-.modal-overlay {
-    display: none; position: fixed; top:0; left:0; width:100%; height:100%;
-    background: rgba(0,0,0,0.9); z-index: 2000;
-}
-.modal-content {
-    position: relative; margin: 5vh auto; width: 90%; max-width: 900px; height: 80vh;
-    background: white; border: 2px solid var(--primary);
-}
-.close-modal {
-    position: absolute; top: -40px; right: 0; font-size: 30px; color: var(--primary); cursor: pointer;
-}
-
-.btn-outline {
-    background: transparent; border: 1px solid var(--primary); color: var(--primary);
-    padding: 15px 35px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
-    transition: var(--transition);
-}
-.btn-outline:hover { background: var(--primary); color: black; }
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-/* Responsivo */
-@media (max-width: 768px) {
-    .nav-links { display: none; }
-    .glamour-title { font-size: 3.5rem; }
-    .floating-bridal-btn { width: 70px; height: 70px; left: 15px; }
+/* MEDIA QUERIES PARA ESCRITORIO */
+@media (min-width: 992px) {
+    .logo img { height: 60px; }
+    .menu-toggle { display: none; }
+    .nav-menu { position: static; display: block; width: auto; background: none; box-shadow: none; padding: 0; }
+    .nav-links { display: flex; gap: 30px; }
+    .hero-video { height: 100vh; }
+    .glamour-title { font-size: 5rem; }
+    .services-container { padding: 100px 10%; }
+    .tabs-scroll-container { overflow: hidden; display: flex; justify-content: center; }
+    .tab-btn { padding: 12px 25px; font-size: 0.9rem; }
+    .location-grid { grid-template-columns: 1fr 1fr; align-items: center; }
+    .price-list li { font-size: 1.1rem; }
 }
