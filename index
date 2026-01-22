@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Saloon | Exclusive Hair Experience</title>
+    
+    <link rel="icon" type="image/png" href="imagenes/imagen_logo.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="imagenes/logo_completo.png" alt="The Saloon Logo">
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#services-section">Servicios</a></li>
+                    <li><a href="#location">Ubicación</a></li>
+                    <li><a href="javascript:void(0)" onclick="openCalendar()" class="nav-cta">Reservar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero-video">
+        <div class="video-overlay"></div>
+        <video autoplay muted loop playsinline class="video-bg">
+            <source src="https://player.vimeo.com/external/494252666.sd.mp4?s=72973127464a78189874a13d8d57868840c884c6&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
+        </video>
+        <div class="hero-content" data-aos="zoom-out">
+            <h1 class="glamour-title">The Saloon</h1>
+            <div class="mission-vision">
+                <p class="mission">Nuestra misión es esculpir tu identidad a través del arte capilar.</p>
+                <p class="vision">Vemos un mundo donde cada reflejo emana confianza y exclusividad.</p>
+            </div>
+            <button class="btn-outline" onclick="openCalendar()">Agendar Cita</button>
+        </div>
+    </section>
+
+    <section id="services-section" class="services-container">
+        <h2 class="section-title">Nuestra <span>Carta</span></h2>
+        
+        <div class="tabs-menu" data-aos="fade-up">
+            <button class="tab-btn active" onclick="showTab('peluqueria')">Peluquería</button>
+            <button class="tab-btn" onclick="showTab('color')">Colorimetría</button>
+            <button class="tab-btn" onclick="showTab('tratamientos')">Tratamientos</button>
+            <button class="tab-btn" onclick="showTab('caballeros')">Caballeros</button>
+            <button class="tab-btn highlight" onclick="showTab('novias')">Novias</button>
+        </div>
+
+        <div class="tabs-content" data-aos="fade-up" data-aos-delay="200">
+            
+            <div id="peluqueria" class="tab-pane active">
+                <ul class="price-list">
+                    <li><span>Corte Mujer</span> <span class="dots"></span> <span>16,00€</span></li>
+                    <li><span>Peinado Corto</span> <span class="dots"></span> <span>14,95€</span></li>
+                    <li><span>Peinado Melena</span> <span class="dots"></span> <span>16,95€</span></li>
+                    <li><span>Recogido</span> <span class="dots"></span> <span>38,00€</span></li>
+                </ul>
+            </div>
+
+            <div id="color" class="tab-pane">
+                <ul class="price-list">
+                    <li><span>Color Raíz Orgánica</span> <span class="dots"></span> <span>28,00€</span></li>
+                    <li><span>Balayage</span> <span class="dots"></span> <span>89,95€</span></li>
+                    <li><span>Matiz</span> <span class="dots"></span> <span>15,00€</span></li>
+                </ul>
+            </div>
+
+            <div id="tratamientos" class="tab-pane">
+                <ul class="price-list">
+                    <li><span>Botox Capilar</span> <span class="dots"></span> <span>45,00€</span></li>
+                    <li><span>Alisado Orgánico</span> <span class="dots"></span> <span>120,00€</span></li>
+                    <li><span>Reparación Intensiva</span> <span class="dots"></span> <span>22,00€</span></li>
+                </ul>
+            </div>
+
+            <div id="caballeros" class="tab-pane">
+                <ul class="price-list">
+                    <li><span>Corte con Lavado</span> <span class="dots"></span> <span>15,00€</span></li>
+                    <li><span>Arreglo de Barba</span> <span class="dots"></span> <span>13,95€</span></li>
+                    <li><span>Corte Niños</span> <span class="dots"></span> <span>10,00€</span></li>
+                </ul>
+            </div>
+
+            <div id="novias" class="tab-pane">
+                <div class="special-bridal">
+                    <h3>Servicios Exclusivos para Novias</h3>
+                    <p>Creamos el look perfecto para tu día inolvidable. Pruebas de peinado, maquillaje profesional y asesoría de imagen.</p>
+                    <button class="btn-gold" onclick="window.open('https://wa.me/34641798933?text=Información%20Novias')">Consultar Pack Novia</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="floating-bridal-btn" onclick="showTab('novias'); location.href='#services-section';">
+        <i class="fas fa-gem"></i>
+        <span>Novias</span>
+    </div>
+
+    <section id="location" class="location-section">
+        <div class="location-grid">
+            <div class="info-card" data-aos="fade-right">
+                <h2>Visítanos</h2>
+                <p><strong>Calle Pedro Rico 13, Madrid</strong></p>
+                <p>Tel: +34 641 79 89 33</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/mr.galvan" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/34641798933" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="map-container" data-aos="fade-left">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3034.782806503923!2d-3.6931215!3d40.48000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42296497f6c31f%3A0x6d90d8a56b6c2c31!2sC.%20de%20Pedro%20Rico%2C%2013%2C%2028029%20Madrid!5e0!3m2!1ses!2ses!4v1700000000000" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <div id="calendarModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeCalendar()">&times;</span>
+            <iframe src="https://calendar.app.google/hWHvNfavn41brphr7" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <a href="https://wa.me/34641798933" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer class="main-footer">
+        <p>© 2025 THE SALOON BY MR. GALVAN | MADRID</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
