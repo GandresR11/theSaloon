@@ -38,3 +38,27 @@ function showTab(tabId) {
 const modal = document.getElementById("calendarModal");
 function openCalendar() { modal.style.display = "block"; document.body.style.overflow = "hidden"; }
 function closeCalendar() { modal.style.display = "none"; document.body.style.overflow = "auto"; }
+
+function showTab(tabId) {
+    // 1. Ocultar todos los contenidos de las pestañas
+    const contents = document.querySelectorAll('.tab-pane');
+    contents.forEach(content => {
+        content.classList.remove('active');
+    });
+
+    // 2. Quitar el estado activo de todos los botones
+    const buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    // 3. Mostrar el contenido seleccionado
+    document.getElementById(tabId).classList.add('active');
+
+    // 4. Marcar el botón actual como activo
+    // Buscamos el botón que tiene el onclick con el id correspondiente
+    const activeBtn = document.querySelector(`[onclick="showTab('${tabId}')"]`);
+    if (activeBtn) {
+        activeBtn.classList.add('active');
+    }
+}
